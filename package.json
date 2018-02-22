@@ -19,6 +19,5 @@
     "@types/node": "^9.4.6",
     "pre-commit": "^1.2.2",
     "typescript": "^2.7.2"
-  },
-  "pre-commit": ["lint"]
+  }
 }
