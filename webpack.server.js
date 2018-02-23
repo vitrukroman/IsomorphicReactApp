@@ -1,7 +1,7 @@
 const path = require("path");
 const merge = require("webpack-merge");
-
 const baseConfig = require("./webpack.base");
+const webpackNodeExternals = require("webpack-node-externals");
 
 module.exports = {
   target: "node",
@@ -25,7 +25,9 @@ module.exports = {
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js"]
-  }
+  },
+
+  externals: [webpackNodeExternals()]
 
 }
 
