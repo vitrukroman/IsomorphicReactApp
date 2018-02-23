@@ -1,14 +1,10 @@
 const path = require("path");
-const merge = require("webpack-merge");
-
-const baseConfig = require("./webpack.base");
 
 module.exports = {
-  target: "node",
-  entry: "./src/index.tsx",
+  entry: "./src/client/client.tsx",
   output: {
-    filename: "index.js",
-    path: path.resolve(__dirname, "dist")
+    filename: "bundle.js",
+    path: path.resolve(__dirname, "public")
   },
   module: {
     rules: [
