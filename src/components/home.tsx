@@ -1,7 +1,7 @@
 import React from "react";
 
 class Home extends React.Component {
-  render() {
+  public render() {
     return <div onClick={() => console.log("HI")}>Thigngs is the home componegnt </div>;
   }
 }

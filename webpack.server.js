@@ -1,34 +1,14 @@
 const path = require("path");
 const merge = require("webpack-merge");
-const baseConfig = require("./webpack.base");
+const common = require("./webpack.common");
 const webpackNodeExternals = require("webpack-node-externals");
 
-module.exports = {
+module.exports = merge(common, {
   target: "node",
-  entry: "./src/index.tsx",
+  entry: "./src/server.tsx",
   output: {
-    filename: "index.js",
+    filename: "server.js",
     path: path.resolve(__dirname, "dist")
   },
-  module: {
-    rules: [
-      {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'ts-loader', 
-          }
-        ]
-      }
-    ],
-    
-  },
-  resolve: {
-    extensions: [".ts", ".tsx", ".js"]
-  },
-
   externals: [webpackNodeExternals()]
-
-}
-
-
+});
