@@ -6,10 +6,6 @@ interface IUsersListProps {
   fetchUsers: () => void;
 }
 class UsersList extends React.Component<IUsersListProps> {
-  public componentDidMount() {
-    this.props.fetchUsers();
-  }
-
   public renderUsersList() {
     return this.props.users.map((user: IUser) => {
       return <li key={user.id}>{user.name}</li>;
@@ -17,6 +13,7 @@ class UsersList extends React.Component<IUsersListProps> {
   }
 
   public render() {
+
     return (
       <ul>
         {this.renderUsersList()}

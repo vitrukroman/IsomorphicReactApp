@@ -1,3 +1,4 @@
+import "isomorphic-fetch";
 import Koa from "koa";
 import Router from "koa-router";
 import KoaStatic from "koa-static";
