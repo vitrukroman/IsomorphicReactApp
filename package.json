@@ -5,8 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run test",
-    "dev:build:client": "webpack --config webpack.client.js --watch",
-    "start:dev": "webpack --watch --config webpack.server.js & nodemon",
+    "build:client:dev": "NODE_ENV=development webpack --config webpack.client.js --watch",
+    "build:client": "NODE_ENV=production webpack --config webpack.client.js",
+    "build:server:dev": "NODE_ENV=development webpack --watch --config webpack.server.js",
+    "build:server": "NODE_ENV=production webpack --config webpack.server.js",
+    "start:dev": "concurrently \"npm run build:client:dev\" \"npm run build:server:dev\" nodemon ",
+    "start": "node dist/server.js",
+    "build": "npm run build:client && npm run build:server",
     "lint": "tslint --project . --fix"
   },
   "author": "Roman Vitruk",
@@ -33,6 +38,7 @@
     "@types/redux-saga": "^0.10.5",
     "@types/redux-thunk": "^2.1.0",
     "@types/serialize-javascript": "^1.3.2",
+    "concurrently": "^3.5.1",
     "koa-static": "^4.0.2",
     "pre-commit": "^1.2.2",
     "react-dom": "^16.2.0",

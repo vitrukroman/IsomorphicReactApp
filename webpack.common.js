@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_ENV,
   entry: "./src/client/client.tsx",
   output: {
     filename: "bundle.js",
