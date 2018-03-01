@@ -4,6 +4,7 @@ import ReactDOMServer from "react-dom/server";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import { Store } from "redux";
+import serialize from "serialize-javascript";
 import Routes from "../routes";
 import IStore from "../types/store";
 
@@ -20,13 +21,16 @@ export default (req: Request, store: Store<IStore>) => {
   );
 
   return `
-    <html>
-      <head></head>
-      <body>
-        <div id="root">${content}</div>
-        <script src="bundle.js">
-        </script>
-      </body>
-    </html>
+  <html>
+    <head></head>
+    <body>
+      <div id="root">${content}</div>
+      <script>
+        window.__INITIAL_STATE__ = ${serialize(store.getState())}
+      </script>
+      <script src="bundle.js">
+      </script>
+    </body>
+  </html>
   `;
 };

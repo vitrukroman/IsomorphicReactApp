@@ -2,16 +2,21 @@ import "isomorphic-fetch";
 import Koa from "koa";
 import Router from "koa-router";
 import KoaStatic from "koa-static";
-import createStore from "./helpers/createStore";
+import AppStore from "./helpers/appStore";
 import renderer from "./helpers/renderer";
 
 const app = new Koa();
 const router = new Router();
 app.use(KoaStatic("public"));
-router.get("*", (ctx, next) => {
-  const store = createStore();
-  
-  ctx.body = renderer(ctx.request, store);
+router.get("*", async (ctx, next) => {
+  const appStore = new AppStore();
+
+  const donePromise = appStore.runSaga().done;
+  renderer(ctx.request, appStore.instance);
+  appStore.close();
+  await donePromise;
+
+  ctx.body = renderer(ctx.request, appStore.instance);
   next();
 });
 
