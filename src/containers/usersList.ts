@@ -8,7 +8,11 @@ interface IUsersListStateProps {
   users: IUser[];
 }
 
-const UsersList = connect<IUsersListStateProps, {}, {}, IStore>(
+interface IHeaderDispatchProps {
+  fetchUsers: () => void;
+}
+
+const UsersList = connect<IUsersListStateProps, IHeaderDispatchProps, {}, IStore>(
   (state: IStore) => {
     return {
       users: state.users,

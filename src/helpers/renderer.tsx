@@ -1,11 +1,11 @@
-import { Request } from "koa";
+import { Request } from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
 import { Provider } from "react-redux";
 import { StaticRouter } from "react-router-dom";
 import { Store } from "redux";
 import serialize from "serialize-javascript";
-import Routes from "../routes";
+import App from "../components/app";
 import IStore from "../types/store";
 
 export default (req: Request, store: Store<IStore>) => {
@@ -15,7 +15,7 @@ export default (req: Request, store: Store<IStore>) => {
         location={req.path}
         context={{}}
       >
-        <Routes />
+        <App />
       </StaticRouter>
     </Provider>,
   );

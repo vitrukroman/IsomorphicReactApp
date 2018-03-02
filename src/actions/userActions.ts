@@ -1,8 +1,10 @@
 import IUser from "../types/user";
 
 enum EUsersActionType {
-  fetch = "fetchUsers",
-  fetchSuccess = "fetchSuccess",
+  fetch = "usersFetch",
+  fetchSuccess = "usersFetchSuccess",
+  currentFetch = "userCurrentFetch",
+  currentFetchSuccess = "userCurrentFetchSuccess",
 }
 
 interface IUsersFetchAction {
@@ -16,22 +18,52 @@ interface IUsersFetchSuccessAction {
   type: EUsersActionType.fetchSuccess;
 }
 
+interface IUserCurrentFetchAction {
+  type: EUsersActionType.currentFetch;
+}
+
+interface IUserCurrentFetchSuccessAction {
+  payload: {
+    user: IUser;
+  };
+  type: EUsersActionType.currentFetchSuccess;
+}
+
 const usersFetchAction = (): IUsersFetchAction => {
   return {
     type: EUsersActionType.fetch,
   };
 };
 
-const usersFetchSuccessActions = (users: IUser[]): IUsersFetchSuccessAction => {
+const usersFetchSuccessAction = (users: IUser[]): IUsersFetchSuccessAction => {
   return {
     payload: { users },
     type: EUsersActionType.fetchSuccess,
   };
 };
 
+const userCurrentFetchAction = (): IUserCurrentFetchAction => {
+  return {
+    type: EUsersActionType.currentFetch,
+  };
+};
+
+const userCurrentFetchSuccessAction = (user: IUser): IUserCurrentFetchSuccessAction => {
+  return {
+    payload: {
+      user,
+    },
+    type: EUsersActionType.currentFetchSuccess,
+  };
+};
+
 export {
   EUsersActionType,
   usersFetchAction,
-  usersFetchSuccessActions,
+  usersFetchSuccessAction,
   IUsersFetchSuccessAction,
+  IUserCurrentFetchAction,
+  IUserCurrentFetchSuccessAction,
+  userCurrentFetchAction,
+  userCurrentFetchSuccessAction,
 };

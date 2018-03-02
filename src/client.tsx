@@ -2,8 +2,9 @@ import React from "react";
 import ReactDom from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import App from "./components/app";
 import AppStore from "./helpers/appStore";
-import Routes from "./routes";
+import ApiService from "./services/apiService/apiService";
 import IStore from "./types/store";
 
 declare global {
@@ -12,14 +13,15 @@ declare global {
     __INITIAL_STATE__: IStore;
   }
 }
-const appStore = new AppStore(window.__INITIAL_STATE__);
+const apiService = new ApiService("/api");
+const appStore = new AppStore(apiService, window.__INITIAL_STATE__);
 delete window.__INITIAL_STATE__;
 appStore.runSaga();
 
 ReactDom.hydrate(
   <Provider store={appStore.instance}>
     <BrowserRouter>
-      <Routes />
+      <App />
     </BrowserRouter>
   </Provider>,
   document.querySelector("#root"),

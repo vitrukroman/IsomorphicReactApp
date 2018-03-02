@@ -6,15 +6,18 @@ import ApiService from "../services/apiService/apiService";
 import IStore from "../types/store";
 
 const sagaMiddleWare = createSagaMiddleware();
-const apiService = new ApiService();
 
 class AppStore {
   private static defaultState = {
+    auth: null,
     users: [],
   };
   private store: Store<IStore>;
 
-  constructor(initialState: IStore = AppStore.defaultState) {
+  constructor(
+    private apiService: ApiService,
+    initialState: IStore = AppStore.defaultState,
+  ) {
     this.store = createStore<IStore>(
       rootReducer,
       initialState,
@@ -23,7 +26,7 @@ class AppStore {
   }
 
   public runSaga() {
-    return sagaMiddleWare.run(rootSaga, apiService);
+    return sagaMiddleWare.run(rootSaga, this.apiService);
   }
 
   public close() {
