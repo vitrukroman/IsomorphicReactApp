@@ -12,9 +12,8 @@ function* userCurrentFetchSaga(apiService: ApiService) {
     const userCurrent = yield call(apiService.fetchCurrentUser);
     yield put(userCurrentFetchSuccessAction(userCurrent));
   } catch (error) {
-    console.error(error);
+    // DO NOTHING, REALLY!
   }
-
 }
 
 function* usersSaga(apiService: ApiService) {

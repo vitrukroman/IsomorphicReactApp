@@ -8,6 +8,7 @@ import favicon from "serve-favicon";
 import AppStore from "./helpers/appStore";
 import renderer from "./helpers/renderer";
 import ApiService from "./services/apiService/apiService";
+import IContext from "./types/context";
 
 const app = express();
 
@@ -29,11 +30,18 @@ app.get("*", async (req, res) => {
   const appStore = new AppStore(apiService);
 
   const donePromise = appStore.runSaga().done;
-  renderer(req, appStore.instance);
+  const context: IContext = {
+    notFound: false,
+  };
+  renderer(req, appStore.instance, context);
   appStore.close();
   await donePromise;
 
-  res.send(renderer(req, appStore.instance));
+  if (context.notFound) {
+    res.status(404);
+  }
+
+  res.send(renderer(req, appStore.instance, context));
 });
 
 const port: number = 3000;

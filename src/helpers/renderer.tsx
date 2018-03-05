@@ -6,14 +6,15 @@ import { StaticRouter } from "react-router-dom";
 import { Store } from "redux";
 import serialize from "serialize-javascript";
 import App from "../components/app";
+import IContext from "../types/context";
 import IStore from "../types/store";
 
-export default (req: Request, store: Store<IStore>) => {
+export default (req: Request, store: Store<IStore>, context: IContext) => {
   const content = ReactDOMServer.renderToString(
     <Provider store={store}>
       <StaticRouter
         location={req.path}
-        context={{}}
+        context={context}
       >
         <App />
       </StaticRouter>
