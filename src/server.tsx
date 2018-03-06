@@ -30,7 +30,7 @@ app.get("*", async (req, res) => {
   const appStore = new AppStore(apiService);
 
   const donePromise = appStore.runSaga().done;
-  const context: IContext = {
+  let context: IContext = {
     notFound: false,
   };
   renderer(req, appStore.instance, context);
@@ -39,11 +39,20 @@ app.get("*", async (req, res) => {
 
   await donePromise;
 
+  context = {
+    notFound: false,
+  };
+  const html = renderer(req, appStore.instance, context);
+
+  if (context.url) {
+    return res.redirect(301, context.url);
+  }
+
   if (context.notFound) {
     res.status(404);
   }
 
-  res.send(renderer(req, appStore.instance, context));
+  res.send(html);
 });
 
 const port: number = 3000;
