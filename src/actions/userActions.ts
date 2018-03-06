@@ -4,6 +4,7 @@ enum EUsersActionType {
   fetch = "usersFetch",
   fetchSuccess = "usersFetchSuccess",
   currentFetch = "userCurrentFetch",
+  currentFetchError = "userCurrentFetchError",
   currentFetchSuccess = "userCurrentFetchSuccess",
 }
 
@@ -27,6 +28,13 @@ interface IUserCurrentFetchSuccessAction {
     user: IUser;
   };
   type: EUsersActionType.currentFetchSuccess;
+}
+
+interface IUserCurrentFetchErrorAction {
+  payload: {
+    error: Error;
+  };
+  type: EUsersActionType.currentFetchError;
 }
 
 const usersFetchAction = (): IUsersFetchAction => {
@@ -57,6 +65,15 @@ const userCurrentFetchSuccessAction = (user: IUser): IUserCurrentFetchSuccessAct
   };
 };
 
+const userCurrentFetchErrorAction = (error: Error): IUserCurrentFetchErrorAction => {
+  return {
+    payload: {
+      error,
+    },
+    type: EUsersActionType.currentFetchError,
+  };
+};
+
 export {
   EUsersActionType,
   usersFetchAction,
@@ -64,6 +81,8 @@ export {
   IUsersFetchSuccessAction,
   IUserCurrentFetchAction,
   IUserCurrentFetchSuccessAction,
+  IUserCurrentFetchErrorAction,
   userCurrentFetchAction,
+  userCurrentFetchErrorAction,
   userCurrentFetchSuccessAction,
 };

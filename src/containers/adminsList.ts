@@ -1,6 +1,6 @@
 import { connect, Dispatch } from "react-redux";
 import { adminsFetchAction } from "../actions/adminActions";
-import UsersListComponent from "../components/usersList";
+import UsersListComponent from "../components/adminList";
 import IStore from "../types/store";
 import IUser from "../types/user";
 

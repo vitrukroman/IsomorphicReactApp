@@ -10,7 +10,10 @@ const sagaMiddleWare = createSagaMiddleware();
 class AppStore {
   private static defaultState = {
     admins: [],
-    auth: null,
+    auth: {
+      checked: false,
+      user: null,
+    },
     users: [],
   };
   private store: Store<IStore>;

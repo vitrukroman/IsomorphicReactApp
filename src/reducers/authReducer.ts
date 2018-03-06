@@ -1,10 +1,18 @@
-import { EUsersActionType, IUserCurrentFetchSuccessAction } from "../actions/userActions";
-import IUser from "../types/user";
+import {
+  EUsersActionType,
+  IUserCurrentFetchErrorAction,
+  IUserCurrentFetchSuccessAction,
+} from "../actions/userActions";
+import Auth from "../types/auth";
 
-const authReducer = (state: IUser | null = null, action: IUserCurrentFetchSuccessAction) => {
+const authReducer = (
+  state: Auth = new Auth(),
+  action: IUserCurrentFetchSuccessAction | IUserCurrentFetchErrorAction) => {
   switch (action.type) {
     case EUsersActionType.currentFetchSuccess:
-      return action.payload.user;
+      return new Auth(true, action.payload.user);
+    case EUsersActionType.currentFetchError:
+      return new Auth(true);
     default:
       return state;
   }

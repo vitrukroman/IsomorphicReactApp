@@ -8,6 +8,7 @@ import ApiService from "../services/apiService/apiService";
 function* fetchAdminsSaga(apiService: ApiService) {
   try {
     const admins = yield call(apiService.fetchAdmins);
+
     if (!admins.error) {
       yield put(adminsFetchSuccessAction(admins));
     }

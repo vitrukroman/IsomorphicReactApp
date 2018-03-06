@@ -34,7 +34,9 @@ app.get("*", async (req, res) => {
     notFound: false,
   };
   renderer(req, appStore.instance, context);
+
   appStore.close();
+
   await donePromise;
 
   if (context.notFound) {

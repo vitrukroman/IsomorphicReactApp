@@ -1,11 +1,11 @@
 import { connect, Dispatch } from "react-redux";
 import { userCurrentFetchAction } from "../actions/userActions";
 import HeaderComponent from "../components/header";
+import Auth from "../types/auth";
 import IStore from "../types/store";
-import IUser from "../types/user";
 
 interface IHeaderStateProps {
-  auth: IUser | null;
+  auth: Auth;
 }
 
 interface IHeaderDispatchProps {
