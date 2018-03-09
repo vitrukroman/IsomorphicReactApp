@@ -1,5 +1,7 @@
 import React from "react";
 import IUser from "../types/user";
+import { Helmet } from "react-helmet";
+
 
 interface IUsersListProps {
   users: IUser[];
@@ -19,11 +21,23 @@ class UsersList extends React.Component<IUsersListProps> {
     });
   }
 
+  public head() {
+    return (
+      <Helmet>
+        <title>{`${this.props.users.length} users loaded`}</title>
+        <meta property="og:title" content="Users App" />
+      </Helmet>
+    );
+  }
+
   public render() {
     return (
-      <ul>
-        {this.renderUsersList()}
-      </ul>
+      <div>
+        {this.head()}
+        <ul>
+          {this.renderUsersList()}
+        </ul>
+      </div>
     );
   }
 }
