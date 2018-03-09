@@ -1,5 +1,5 @@
 import compression from "compression";
-import express from "express";
+import express, { Request, Response } from "express";
 // tslint:disable-next-line
 const proxy = require("express-http-proxy");
 import "isomorphic-fetch";
@@ -22,7 +22,7 @@ app.use("/api", proxy("http://react-ssr-api.herokuapp.com", {
 }));
 
 app.use(express.static("public"));
-app.get("*", async (req, res) => {
+app.get("*", async (req: Request, res: Response) => {
   const apiService = new ApiService(
     "http://react-ssr-api.herokuapp.com",
     req.headers.cookie,
