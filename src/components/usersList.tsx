@@ -1,18 +1,28 @@
 import React from "react";
-import IUser from "../types/user";
 import { Helmet } from "react-helmet";
-
+import IUser from "../types/user";
 
 interface IUsersListProps {
   users: IUser[];
   fetchUsers: () => void;
 }
 
-class UsersList extends React.Component<IUsersListProps> {
+interface IUsersListState {
+  result: number;
+}
+
+class UsersList extends React.Component<IUsersListProps, IUsersListState> {
   constructor(props: IUsersListProps) {
     super(props);
 
     this.props.fetchUsers();
+    this.state = {
+      result: 0,
+    };
+
+    if (typeof window === "object" && (window as any).Worker) {
+      this.initWorker();
+    }
   }
 
   public renderUsersList() {
@@ -34,11 +44,24 @@ class UsersList extends React.Component<IUsersListProps> {
     return (
       <div>
         {this.head()}
+        {this.state.result}
         <ul>
           {this.renderUsersList()}
         </ul>
       </div>
     );
+  }
+
+  private initWorker() {
+    const worker = new Worker("calculateSomeData.js");
+    worker.onmessage = (ev: MessageEvent) => {
+      console.log("RECEIVED", ev);
+      this.setState({
+        result: ev.data,
+      });
+    };
+
+    worker.postMessage(this.state.result);
   }
 }
 

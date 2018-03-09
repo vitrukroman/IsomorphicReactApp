@@ -6,10 +6,11 @@ const webpackNodeExternals = require("webpack-node-externals");
 
 module.exports = merge(common, {
   entry: {
-    app: "./src/client.tsx"
+    bundle: "./src/client.tsx",
+    calculateSomeData: "./src/calculateSomeData.ts"
   },
   output: {
-    filename: "bundle.js",
+    filename: "[name].js",
     path: path.resolve(__dirname, "public"),
     publicPath: "/"
   },
