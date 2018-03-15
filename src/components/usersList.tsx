@@ -16,13 +16,6 @@ class UsersList extends React.Component<IUsersListProps, IUsersListState> {
     super(props);
 
     this.props.fetchUsers();
-    this.state = {
-      result: 0,
-    };
-
-    if (typeof window === "object" && (window as any).Worker) {
-      this.initWorker();
-    }
   }
 
   public renderUsersList() {
@@ -44,24 +37,11 @@ class UsersList extends React.Component<IUsersListProps, IUsersListState> {
     return (
       <div>
         {this.head()}
-        {this.state.result}
         <ul>
           {this.renderUsersList()}
         </ul>
       </div>
     );
-  }
-
-  private initWorker() {
-    const worker = new Worker("calculateSomeData.js");
-    worker.onmessage = (ev: MessageEvent) => {
-      console.log("RECEIVED", ev);
-      this.setState({
-        result: ev.data,
-      });
-    };
-
-    worker.postMessage(this.state.result);
   }
 }
 

@@ -7,7 +7,6 @@ const webpackNodeExternals = require("webpack-node-externals");
 module.exports = merge(common, {
   entry: {
     bundle: "./src/client.tsx",
-    calculateSomeData: "./src/calculateSomeData.ts"
   },
   output: {
     filename: "[name].js",
@@ -23,5 +22,11 @@ module.exports = merge(common, {
         }
       }
     ]
-  }
+  },
+  devServer: {
+    hot: true
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ]
 });

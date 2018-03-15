@@ -8,7 +8,9 @@ import {
 import ApiService from "../services/apiService/apiService";
 
 function* fetchUsersSaga(apiService: ApiService) {
+  console.log(111);
   const users = yield call(apiService.fetchUsers);
+  console.log(users);
   yield put(usersFetchSuccessAction(users));
 }
 

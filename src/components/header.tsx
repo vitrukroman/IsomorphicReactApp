@@ -22,7 +22,7 @@ class Header extends React.Component<IHeaderProps> {
     return (
       <div>
         <div>
-          <Link to="/">React SSR</Link>
+          <Link to="/">Hoddddddfmed</Link>
           <Link to="/users">Users</Link>
           <Link to="/admins">Admins</Link>
           {authButton}

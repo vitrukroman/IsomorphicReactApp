@@ -27,6 +27,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
   return `
   <html>
     <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
     </head>
