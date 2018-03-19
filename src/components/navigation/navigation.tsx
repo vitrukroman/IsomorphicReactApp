@@ -20,12 +20,18 @@ interface INavigationState {
 class Navigation extends React.Component<INavigationProps, INavigationState> {
   public static use = EUsage;
 
+
   public constructor(props: INavigationProps) {
     super(props);
 
+    this.closeMenu = this.closeMenu.bind(this);
     this.state = {
       isOpened: false,
     };
+
+    if (typeof window === "object") {
+      window.addEventListener("resize", this.closeMenu);
+    }
   }
 
   public render() {
@@ -50,6 +56,13 @@ class Navigation extends React.Component<INavigationProps, INavigationState> {
     );
   }
 
+  public componentWillUnmount() {
+    if (typeof window === "object") {
+      window.removeEventListener("resize", this.closeMenu);
+    }
+  }
+
+
   private linkTo(name: string, path: string) {
     return (
       <Link
@@ -69,7 +82,6 @@ class Navigation extends React.Component<INavigationProps, INavigationState> {
       isOpened: !prevState.isOpened,
     }));
   }
-
 
   private closeMenu() {
     this.setState({
