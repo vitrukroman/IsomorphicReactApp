@@ -9,11 +9,11 @@ class App extends React.Component {
   public render() {
     return (
       <div className={styles.app}>
-        <header><Header/></header>
-        <aside>Aside 1</aside>
-        <main><Routes/></main>
-        <aside>Aside 2</aside>
-        <footer>
+        <header className={styles.header}><Header/></header>
+        <aside className={styles.aside}/>
+        <main className={styles.main}><Routes/></main>
+        <aside className={styles.aside}/>
+        <footer className={styles.footer}>
           <Navigation useFor={Navigation.use.forFooter}/>
         </footer>
       </div>
