@@ -1,61 +1,61 @@
 @import "../../shared/styles/_media.css";
 
 * {
-    padding: 0;
-    margin: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .app {
-    display: grid;
-    grid-template-areas: "header" "main" "footer";
-    height: 100vh;
-    grid-template-rows: 10vh minmax(70vh, auto) auto;
+  display: grid;
+  grid-template-areas: "header" "main" "footer";
+  height: 100vh;
+  grid-template-rows: 10vh minmax(70vh, auto) auto;
 }
 
 .header {
-    grid-area: header;
-    border-bottom: 1px dashed;
+  grid-area: header;
+  border-bottom: 1px dashed;
 }
 
 .main {
-    grid-area: main;
-    overflow-y: scroll;
-    padding: 10px;
+  grid-area: main;
+  overflow-y: scroll;
+  padding: 10px;
 }
 
 .footer {
-    grid-area: footer;
-    padding: 10px;
-    border-top: 1px dashed black;
+  grid-area: footer;
+  padding: 10px;
+  border-top: 1px dashed black;
 }
 
 .aside {
-    display: none;
+  display: none;
 }
 
 .aside:nth-of-type(1) {
-    grid-area: aside1;
+  grid-area: aside1;
 }
 
 .aside:nth-of-type(2) {
-    grid-area: aside2;
+  grid-area: aside2;
 }
 
 @media (--large) {
-    .app {
-        grid-template-areas: "header header header" "aside1 main aside2";
-        grid-template-rows: 10vh auto;
-    }
+  .app {
+    grid-template-areas: "header header header" "aside1 main aside2";
+    grid-template-rows: 10vh auto;
+  }
 
-    .footer {
-        display: none;
-    }
+  .footer {
+    display: none;
+  }
 
-    .aside {
-        display: block;
-    }
+  .aside {
+    display: block;
+  }
 
-    .main {
-        overflow-y: inherit;
-    }
+  .main {
+    overflow-y: inherit;
+  }
 }
