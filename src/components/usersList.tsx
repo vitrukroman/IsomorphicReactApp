@@ -1,5 +1,5 @@
 import React from "react";
-import { Helmet } from "react-helmet";
+import {Helmet} from "react-helmet";
 import IUser from "../types/user";
 
 interface IUsersListProps {
@@ -20,7 +20,17 @@ class UsersList extends React.Component<IUsersListProps, IUsersListState> {
 
   public renderUsersList() {
     return this.props.users.map((user: IUser) => {
-      return <li key={user.id}>{user.name}</li>;
+      return [
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+        <li key={user.id}>{user.name}</li>,
+      ];
     });
   }
 
@@ -28,19 +38,19 @@ class UsersList extends React.Component<IUsersListProps, IUsersListState> {
     return (
       <Helmet>
         <title>{`${this.props.users.length} users loaded`}</title>
-        <meta property="og:title" content="Users App" />
+        <meta property="og:title" content="Users App"/>
       </Helmet>
     );
   }
 
   public render() {
     return (
-      <div>
+      <React.Fragment>
         {this.head()}
         <ul>
           {this.renderUsersList()}
         </ul>
-      </div>
+      </React.Fragment>
     );
   }
 }

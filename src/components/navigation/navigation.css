@@ -1,0 +1,69 @@
+@import "../../shared/styles/_media.css";
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    flex: 1 0 auto;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.nav.menuOpened {
+    z-index: 1;
+    flex-direction: column;
+    background-color: #f6f6f6;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+    flex: 0 0 auto;
+}
+
+nav.forFooter {
+    flex-direction: row;
+}
+
+.menuButton {
+    width: 8vh;
+    height: 8vh;
+    max-width: 40px;
+    min-width: 30px;
+    max-height: 40px;
+    min-height: 30px;
+    flex: 1 0 50px;
+}
+
+.menuButton.forFooter {
+    display: none;
+}
+
+.menuItem {
+    flex: 1 0 auto;
+    display: none;
+    line-height: 2rem;
+}
+
+
+.menuItem.menuOpened {
+    display: block;
+}
+
+.menuItem.forFooter {
+    display: block;
+    flex: 0 0 50%;
+}
+
+@media (--medium) {
+    .menuItem.forFooter {
+        flex: 0 0 33%;
+    }
+}
+
+@media (--large) {
+    .menuItem {
+        display: block;
+        flex: 0 0 120px;
+    }
+
+    .menuButton {
+        display: none;
+    }
+}

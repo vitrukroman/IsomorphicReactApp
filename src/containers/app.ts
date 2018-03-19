@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import AppComponent from "../components/app";
+import AppComponent from "../components/app/app";
 
 const App = connect()(AppComponent);
 

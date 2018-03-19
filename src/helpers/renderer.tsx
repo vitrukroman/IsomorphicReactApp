@@ -1,12 +1,12 @@
-import { Request } from "express";
+import {Request} from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";
-import { Helmet } from "react-helmet";
-import { Provider } from "react-redux";
-import { StaticRouter } from "react-router-dom";
-import { Store } from "redux";
+import {Helmet} from "react-helmet";
+import {Provider} from "react-redux";
+import {StaticRouter} from "react-router-dom";
+import {Store} from "redux";
 import serialize from "serialize-javascript";
-import App from "../components/app";
+import App from "../components/app/app";
 import IContext from "../types/context";
 import IStore from "../types/store";
 
@@ -17,7 +17,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
         location={req.path}
         context={context}
       >
-        <App />
+        <App/>
       </StaticRouter>
     </Provider>,
   );
@@ -28,6 +28,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
   <html>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="styles.css" >
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
     </head>
