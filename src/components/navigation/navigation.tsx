@@ -20,7 +20,6 @@ interface INavigationState {
 class Navigation extends React.Component<INavigationProps, INavigationState> {
   public static use = EUsage;
 
-
   public constructor(props: INavigationProps) {
     super(props);
 
@@ -61,7 +60,6 @@ class Navigation extends React.Component<INavigationProps, INavigationState> {
       window.removeEventListener("resize", this.closeMenu);
     }
   }
-
 
   private linkTo(name: string, path: string) {
     return (

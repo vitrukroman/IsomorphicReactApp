@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../../containers/header";
-import Routes from "../routes";
 import Navigation from "../navigation/navigation";
+import Routes from "../routes";
 
 const styles = require("./app.css");
 

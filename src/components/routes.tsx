@@ -1,9 +1,9 @@
 import React from "react";
 import {Route, Switch} from "react-router-dom";
-import Home from "./home";
-import NotFoundPage from "./notFound";
 import AdminsList from "../containers/adminsList";
 import UsersList from "../containers/usersList";
+import Home from "./home";
+import NotFoundPage from "./notFound";
 
 export default () => {
   return (

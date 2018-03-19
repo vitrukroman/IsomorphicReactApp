@@ -20,7 +20,7 @@ class AppStore {
   private store: Store<IStore>;
 
   constructor(private apiService: ApiService,
-              initialState: IStore = AppStore.defaultState,) {
+              initialState: IStore = AppStore.defaultState) {
 
     this.store = createStore<IStore>(
       rootReducer,
