@@ -4,7 +4,7 @@ const common = require("./webpack.common.dev");
 const webpackNodeExternals = require("webpack-node-externals");
 
 module.exports = merge(common, {
-  entry: "./src/server.tsx",
+  entry: "./src/server/server.tsx",
   externals: [webpackNodeExternals()],
   output: {
     filename: "server.js",

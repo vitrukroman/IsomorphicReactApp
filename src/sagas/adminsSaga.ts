@@ -13,7 +13,7 @@ function* fetchAdminsSaga(apiService: ApiService) {
       yield put(adminsFetchSuccessAction(admins));
     }
   } catch (error) {
-    console.error(error);
+    // nothing
   }
 }
 

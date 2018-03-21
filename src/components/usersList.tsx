@@ -20,17 +20,7 @@ class UsersList extends React.Component<IUsersListProps, IUsersListState> {
 
   public renderUsersList() {
     return this.props.users.map((user: IUser) => {
-      return [
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-        <li key={user.id}>{user.name}</li>,
-      ];
+      return <li key={user.id}>{user.name}</li>;
     });
   }
 
