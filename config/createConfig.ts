@@ -8,6 +8,7 @@ interface IConfig {
 }
 
 interface IEnvVariables {
+  HOST: string;
   PORT: number;
   API_HOST: string;
   API_PORT: number;
@@ -18,7 +19,7 @@ export default (env: IEnvVariables): IConfig => ({
     host: env.API_HOST,
     port: env.API_PORT,
   },
-  host: env.API_HOST,
+  host: env.HOST,
   port: env.PORT,
 });
 
