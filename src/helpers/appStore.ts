@@ -1,6 +1,6 @@
-import {applyMiddleware, createStore, Store} from "redux";
-import {composeWithDevTools} from "redux-devtools-extension";
-import createSagaMiddleware, {END} from "redux-saga";
+import { applyMiddleware, createStore, Store } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import createSagaMiddleware, { END } from "redux-saga";
 import rootReducer from "../reducers/rootReducer";
 import rootSaga from "../sagas/rootSaga";
 import ApiService from "../services/apiService/apiService";
@@ -25,11 +25,15 @@ class AppStore {
     this.store = createStore<IStore>(
       rootReducer,
       initialState,
-      composeWithDevTools(
-        applyMiddleware(
-          sagaMiddleWare,
-        )),
-    );
+      process.env.NODE_ENV !== "production" ?
+        composeWithDevTools(
+          applyMiddleware(
+            sagaMiddleWare,
+          )) : applyMiddleware(
+        sagaMiddleWare,
+        ),
+    )
+    ;
   }
 
   public runSaga() {
