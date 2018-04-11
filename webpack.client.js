@@ -1,8 +1,6 @@
 const path = require("path");
-const merge = require("webpack-merge");
-const common = require("./webpack.common.prod");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-module.exports = merge(common, {
+module.exports = {
   entry: {
     bundle: "./src/client.tsx",
   },
@@ -12,5 +10,5 @@ module.exports = merge(common, {
   },
   plugins: [
     new CleanWebpackPlugin(["public"]),
-  ]
-});
+  ],
+};

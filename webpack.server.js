@@ -1,9 +1,7 @@
 const path = require("path");
-const merge = require("webpack-merge");
-const common = require("./webpack.common.prod");
 const webpackNodeExternals = require("webpack-node-externals");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-module.exports = merge(common, {
+module.exports = {
   entry: "./src/server/server.tsx",
   externals: [webpackNodeExternals()],
   output: {
@@ -14,4 +12,4 @@ module.exports = merge(common, {
     new CleanWebpackPlugin(["dist"]),
   ],
   target: "node",
-});
+};
