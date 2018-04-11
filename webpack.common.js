@@ -1,7 +1,9 @@
 const path = require("path");
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 module.exports = {
+  mode: process.env.NODE_ENV,
   module: {
     rules: [
       {
@@ -32,11 +34,11 @@ module.exports = {
     ],
 
   },
+  plugins: [
+    new CleanWebpackPlugin(["dist", "public"]),
+    new ExtractTextPlugin("styles.css"),
+  ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
   },
-
-  plugins: [
-    new ExtractTextPlugin("styles.css"),
-  ],
 };
