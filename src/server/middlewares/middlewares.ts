@@ -2,8 +2,8 @@ import compression from "compression";
 import express, { Application } from "express";
 import path from "path";
 import favicon from "serve-favicon";
-import { IConfig } from "../../config/createConfig";
 import "../../favicon.ico";
+import { IConfig } from "../config/createConfig";
 
 const proxy = require("express-http-proxy");
 

@@ -1,14 +1,14 @@
 import { Application, Request, Response } from "express";
-import { IConfig } from "../../config/createConfig";
 import AppStore from "../../helpers/appStore";
-import renderer from "../renderer";
 import ApiService from "../../services/apiService/apiService";
 import IContext from "../../types/context";
+import { IConfig } from "../config/createConfig";
+import renderer from "../renderer";
 
 export default (app: Application, config: IConfig) => {
   app.get("*", async (req: Request, res: Response) => {
     const apiService = new ApiService(
-      `${config.host}:${config.port}/api`,
+      `${config.host}:${config.httpInternalPort}/api`,
       req.headers.cookie,
     );
     const appStore = new AppStore(apiService);

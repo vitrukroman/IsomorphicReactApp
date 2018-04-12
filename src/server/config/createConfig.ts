@@ -4,12 +4,14 @@ interface IConfig {
     port: number;
   };
   host: string;
-  port: number;
+  httpsPort: number;
+  httpInternalPort: number;
 }
 
 interface IEnvVariables {
   HOST: string;
-  PORT: number;
+  HTTPS_PORT: number;
+  HTTP_INTERNAL_PORT: number;
   API_HOST: string;
   API_PORT: number;
 }
@@ -20,7 +22,8 @@ export default (env: IEnvVariables): IConfig => ({
     port: env.API_PORT,
   },
   host: env.HOST,
-  port: env.PORT,
+  httpInternalPort: env.API_PORT,
+  httpsPort: env.HTTPS_PORT,
 });
 
 export {

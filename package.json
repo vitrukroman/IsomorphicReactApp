@@ -9,7 +9,7 @@
     "build:client": "NODE_ENV=production webpack --config webpack.client.production.js",
     "build:server:dev": "NODE_ENV=development webpack --watch --config webpack.server.development.js",
     "build:server": "NODE_ENV=production webpack --config webpack.server.production.js",
-    "start:dev": "concurrently \"npm run build:client:dev\" \"npm run build:server:dev\" nodemon ",
+    "start:dev": "concurrently \"npm run build:client:dev\" \"sleep 5 && npm run build:server:dev\" \"sleep 5 && nodemon\" ",
     "start": "node dist/server.js",
     "build": "npm run build:client && npm run build:server",
     "lint": "tslint --project . --fix",
