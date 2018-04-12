@@ -9,7 +9,7 @@ import serialize from "serialize-javascript";
 import App from "../components/app/app";
 import IContext from "../types/context";
 import IStore from "../types/store";
-const manifest = require("../../public/manifest.json")
+const manifest = require("../../public/manifest.json");
 
 export default (req: Request, store: Store<IStore>, context: IContext) => {
   const content = ReactDOMServer.renderToString(
