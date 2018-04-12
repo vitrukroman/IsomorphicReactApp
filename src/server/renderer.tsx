@@ -9,6 +9,7 @@ import serialize from "serialize-javascript";
 import App from "../components/app/app";
 import IContext from "../types/context";
 import IStore from "../types/store";
+const manifest = require("../../public/manifest.json")
 
 export default (req: Request, store: Store<IStore>, context: IContext) => {
   const content = ReactDOMServer.renderToString(
@@ -28,7 +29,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
   <html>
     <head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="styles.css" >
+      <link rel="stylesheet" href="${manifest["bundle.css"]}" >
       ${helmet.title.toString()}
       ${helmet.meta.toString()}
     </head>
@@ -37,7 +38,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
       <script>
         window.__INITIAL_STATE__ = ${serialize(store.getState())}
       </script>
-      <script src="bundle.js">
+      <script src="${manifest["bundle.js"]}">
       </script>
     </body>
   </html>

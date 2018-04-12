@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import { IConfig } from "../../config/createConfig";
 import AppStore from "../../helpers/appStore";
-import renderer from "../../helpers/renderer";
+import renderer from "../renderer";
 import ApiService from "../../services/apiService/apiService";
 import IContext from "../../types/context";
 

@@ -1,6 +1,6 @@
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
-const ManifestPlugin = require("webpack-manifest-plugin");
 
 module.exports = {
   mode: process.env.NODE_ENV,
@@ -23,22 +23,21 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: [
-            "css-loader?modules&importLoaders=2&localIdentName=[local]__[hash:base64:5]",
-            "postcss-loader",
-          ],
-        }),
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader?modules&importLoaders=2&localIdentName=[local]__[hash:base64:5]",
+          "postcss-loader",
+        ],
       },
     ],
   },
   plugins: [
-    new ExtractTextPlugin("styles.css"),
+    new MiniCssExtractPlugin({
+      filename: "[name].[contenthash].css",
+    }),
     new webpack.DefinePlugin({
       "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
     }),
-    new ManifestPlugin(),
   ],
   resolve: {
     extensions: [".ts", ".tsx", ".js"],
