@@ -41,6 +41,7 @@ class Navigation extends React.Component<INavigationProps, INavigationState> {
         this.state.isOpened ? styles.menuOpened : "",
       ].join(" ")}>
         <img
+          alt="Menu"
           src={menuIcon}
           className={[
             styles.menuButton,

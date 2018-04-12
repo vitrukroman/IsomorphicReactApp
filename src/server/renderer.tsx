@@ -38,7 +38,7 @@ export default (req: Request, store: Store<IStore>, context: IContext) => {
       <script>
         window.__INITIAL_STATE__ = ${serialize(store.getState())}
       </script>
-      <script src="${manifest["bundle.js"]}">
+      <script async src="${manifest["bundle.js"]}">
       </script>
     </body>
   </html>
