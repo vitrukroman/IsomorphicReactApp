@@ -2,5 +2,5 @@
 
 while [ ! -f $1 ]
 do
-  sleep 2
+  sleep 1
 done
