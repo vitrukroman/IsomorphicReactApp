@@ -1,5 +1,5 @@
 import { connect, Dispatch } from "react-redux";
-import { adminsFetchAction } from "../actions/adminActions";
+import { adminsFetchAction, IAdminsFetchAction } from "../actions/adminActions";
 import AdminListComponent from "../components/adminList";
 import IStore from "../types/store";
 import IUser from "../types/user";
@@ -18,7 +18,7 @@ const AdminsList = connect<IAdminsListStateProps, IHeaderDispatchProps, {}, ISto
       users: state.admins,
     };
   },
-  (dispatch: Dispatch<IStore>) => {
+  (dispatch: Dispatch<IAdminsFetchAction>) => {
     return {
       fetchUsers: () => dispatch(adminsFetchAction()),
     };

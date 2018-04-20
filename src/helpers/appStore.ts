@@ -22,7 +22,7 @@ class AppStore {
   constructor(private apiService: ApiService,
               initialState: IStore = AppStore.defaultState) {
 
-    this.store = createStore<IStore>(
+    this.store = createStore<IStore, any, IStore, any>(
       rootReducer,
       initialState,
       process.env.NODE_ENV !== "production" ?
@@ -32,8 +32,7 @@ class AppStore {
           )) : applyMiddleware(
         sagaMiddleWare,
         ),
-    )
-    ;
+    );
   }
 
   public runSaga() {

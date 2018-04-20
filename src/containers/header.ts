@@ -1,5 +1,5 @@
 import { connect, Dispatch } from "react-redux";
-import { userCurrentFetchAction } from "../actions/userActions";
+import { IUserCurrentFetchAction, userCurrentFetchAction } from "../actions/userActions";
 import HeaderComponent from "../components/header/header";
 import Auth from "../types/auth";
 import IStore from "../types/store";
@@ -18,7 +18,7 @@ const Header = connect<IHeaderStateProps, IHeaderDispatchProps, {}, IStore>(
       auth: state.auth,
     };
   },
-  (dispath: Dispatch<IStore>) => {
+  (dispath: Dispatch<IUserCurrentFetchAction>) => {
     return {
       fetchCurrentUser: () => dispath(userCurrentFetchAction()),
     };

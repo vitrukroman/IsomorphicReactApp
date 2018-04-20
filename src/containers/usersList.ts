@@ -1,5 +1,5 @@
 import { connect, Dispatch } from "react-redux";
-import { usersFetchAction } from "../actions/userActions";
+import { IUsersFetchAction, usersFetchAction } from "../actions/userActions";
 import UsersListComponent from "../components/usersList";
 import IStore from "../types/store";
 import IUser from "../types/user";
@@ -18,7 +18,7 @@ const UsersList = connect<IUsersListStateProps, IHeaderDispatchProps, {}, IStore
       users: state.users,
     };
   },
-  (dispatch: Dispatch<IStore>) => {
+  (dispatch: Dispatch<IUsersFetchAction>) => {
     return {
       fetchUsers: () => dispatch(usersFetchAction()),
     };

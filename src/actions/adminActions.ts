@@ -34,4 +34,5 @@ export {
   adminsFetchAction,
   adminsFetchSuccessAction,
   IAdminsFetchSuccessAction,
+  IAdminsFetchAction,
 };

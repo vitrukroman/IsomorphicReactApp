@@ -82,6 +82,7 @@ export {
   IUserCurrentFetchAction,
   IUserCurrentFetchSuccessAction,
   IUserCurrentFetchErrorAction,
+  IUsersFetchAction,
   userCurrentFetchAction,
   userCurrentFetchErrorAction,
   userCurrentFetchSuccessAction,
