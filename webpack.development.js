@@ -4,7 +4,11 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
 
 module.exports = merge(common, {
-  devtool: eval,
+  devServer: {
+    host: "rvitruk-mac.levi9.com",
+    port: 3000,
+  },
+  devtool: "eval",
   output: {
     filename: "[name].js",
     path: path.resolve(__dirname, "public"),

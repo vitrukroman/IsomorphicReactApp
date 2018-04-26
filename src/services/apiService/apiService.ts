@@ -15,7 +15,7 @@ class ApiService {
 
   public fetchAdmins = async () => {
     const response = await fetch(`${this.resource}admins`, {
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         cookie: this.cookie,
       },
@@ -27,7 +27,7 @@ class ApiService {
 
   public fetchCurrentUser = async () => {
     const response = await fetch(`${this.resource}current_user`, {
-      credentials: "same-origin",
+      credentials: "include",
       headers: {
         cookie: this.cookie,
       },
