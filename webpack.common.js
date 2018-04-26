@@ -2,7 +2,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 const path = require("path");
 const CleanWebpackPlugin = require("clean-webpack-plugin"); //installed via npm
-const ManifestPlugin = require("webpack-manifest-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
@@ -55,7 +54,6 @@ module.exports = {
   plugins: [
     new webpack.EnvironmentPlugin("NODE_ENV"),
     new CleanWebpackPlugin(["public"]),
-    new ManifestPlugin(),
     new HtmlWebpackPlugin({
       template: "src/index.html",
     }),
