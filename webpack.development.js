@@ -5,9 +5,9 @@ const path = require("path");
 
 module.exports = merge(common, {
   devServer: {
-    host: "0.0.0.0",
-    port: 3000,
-    public: "rvitruk-mac.levi9.com:3000",
+    host: process.env.HOST,
+    port: process.env.PORT,
+    public: process.env.PUBLIC,
   },
   devtool: "eval",
   output: {
